@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #ccddff;
+        font-family: "Gowun Dodum", sans-serif;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .padding-default {
+        padding: 40px;
+      }
+
+      #app {
+        max-width: 600px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="glass padding-default" style="margin-top: 40px">
+      <h1>Mamacita: Vista del monedero!</h1>
+
+      <div class="glass padding-default" id="balance">
+        <h2>Balance</h2>
+      </div>
+      <div class="glass padding-default" style="margin-top: 40px" id="assets">
+        <h2>Assets</h2>
+      </div>
+     
+    </div>
+
+    <script>
+      const url =
+        "https://raw.githubusercontent.com/ravenrebels/mamacita/master/data.json";
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          const d = document.createElement("div");
+          d.innerHTML = data.balance;
+          document.getElementById("balance").appendChild(d);
+
+          const assets = document.createElement("div");
+
+          Object.keys(data.assets).map(function (name) {
+            const div = document.createElement("div");
+            div.innerText = name + " " + data.assets[name];
+            assets.appendChild(div);
+          });
+         
+          document.getElementById("assets").appendChild(assets);
+        });
+    </script>
+  </body>
+</html>
