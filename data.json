@@ -1,9 +1,9 @@
 {
-    "balance": 309.45844907,
+    "balance": 309.45385352,
     "assets": {
         "BEER_TOKEN": 45,
         "CATE": 1,
         "DRUNK": 1,
-        "HOPIUM": 330
+        "HOPIUM": 329
     }
 }
